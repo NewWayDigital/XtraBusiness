@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Image from "next/image";
+import { config } from '@fortawesome/fontawesome-svg-core'
+import '@fortawesome/fontawesome-svg-core/styles.css'
+
+config.autoAddCss = false
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,8 +32,8 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
-        <header className="flex flex-row justify-between items-center bg-[#262626] font-sans text-sm h-[54px] dark:bg-black p-4 text-white z-1">
+      <body className="min-h-full relative overflow-x-hidden">
+        <header className="flex flex-row justify-between items-center bg-[#262626] font-sans text-sm h-[54px] dark:bg-black p-4 text-white z-10 absolute top-0 left-0 right-0 sticky">
           <Image
             src="/logoX.svg"
             alt="Logo"
@@ -39,6 +43,38 @@ export default function RootLayout({
           <div className="absolute left-[35%]">Limited time offer, Buy XTRA WordPress theme only <strong>$39</strong></div>
           <button className="bg-[#82b440] text-[#262626] px-4 py-2 rounded font-[Asap]">Download XTRA Theme</button>
         </header>
+        <div className="flex flex-row items-center z-2 justify-between rounded-full shadow-lg bg-white w-[90%] mt-10 mx-20 top-o sticky">
+          <Image
+            src="/logo-nav.png"
+            alt="Logo"
+            width={200}
+            height={48}
+          />
+          <div className="flex gap-6 font-asap">
+            <ul className="flex flex-row gap-6 items-center justify-center w-full text-[#636363] font-asap font-bold text-[16px]">
+              <li className="text-[#55C48B] relative"><a href="#home">Home</a><div className="absolute -left-4 -top-1 -z-1 h-10 w-10 bg-[#01849F14] rounded-full"></div></li>
+              <li className="hover:text-[#55C48B] relative group"><a href="#home">About</a><div className="absolute -left-4 -top-1 -z-1 h-10 w-10 bg-[#01849F14] rounded-full hidden group-hover:block"></div></li>
+              <li className="hover:text-[#55C48B] relative group"><a href="#home">Services</a><div className="absolute -left-4 -top-1 -z-1 h-10 w-10 bg-[#01849F14] rounded-full hidden group-hover:block"></div></li>
+              <li className="hover:text-[#55C48B] relative group"><a href="#home">Blog</a><div className="absolute -left-4 -top-1 -z-1 h-10 w-10 bg-[#01849F14] rounded-full hidden group-hover:block"></div></li>
+              <li className="relative group flex flex-row">
+                <a href="#home" className="group-hover:text-[#55C48B]">Pages</a>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="size-6 mx-1  group-hover:rotate-180">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                </svg>
+                <div className="absolute -left-4 -top-1 -z-1 h-10 w-10 bg-[#01849F14] rounded-full hidden group-hover:block"></div>
+                <ul className="absolute top-full left-0 bg-white rounded-lg shadow-xl p-4 w-60 opacity-0 group-hover:opacity-100 transition-opacity duration-5text-red00 invisible group-hover:visible">
+                  <li className="px-4 py-2 hover:bg-gray-100 hover:text-[#55C48B] hover:translate-x-2 border-l-2"><a href="#home">FAQ</a></li>
+                  <li className="px-4 py-2 hover:bg-gray-100 hover:text-[#55C48B] hover:translate-x-2 border-l-2"><a href="#home">Shop</a></li>
+                  <li className="px-4 py-2 hover:bg-gray-100 hover:text-[#55C48B] hover:translate-x-2 border-l-2"><a href="#home">Cart</a></li>
+                  <li className="px-4 py-2 hover:bg-gray-100 hover:text-[#55C48B] hover:translate-x-2 border-l-2"><a href="#home">My account</a></li>
+                  <li className="px-4 py-2 hover:bg-gray-100 hover:text-[#55C48B] hover:translate-x-2 border-l-2"><a href="#home">Dropdown menu</a></li>
+                </ul>
+              </li>
+              <li className="hover:text-[#55C48B] relative group"><a href="#home">Contact</a><div className="absolute -left-4 -top-1 -z-1 h-10 w-10 bg-[#01849F14] rounded-full hidden group group-hover:block"></div></li>
+            </ul>
+          </div>
+          <button className="bg-gradient-to-r from-[#55c48b] to-[#01849f] shadow-lg text-[#262626] h-[60px] px-6 m-6 rounded-full font-[Asap] text-center text-white font-asap font-bold cursor-pointer hover:shadow-xl/30 hover:shadow-[#01849f]">Free consultation</button>
+        </div>
         {children}
       </body>
     </html>
